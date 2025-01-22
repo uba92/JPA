@@ -10,6 +10,10 @@ public class Partecipazione {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //più partecipazioni possono essere collegate a una singola persona, per questo motivo uso la relazione ManyToOne
+    //Partecipazione è la classe proprietaria, cioè è in questa classe che sto referenziando la colonna
+    //persona_id - in SQL nella tabella Partecipazione ho una colonna persona_id che prende il valore dalla tabella
+    //persona, precisamente dalla sua PRIMARY KEY (id della persona)
     @ManyToOne
     @JoinColumn(name = "persona_id", nullable = false)
     private Persona persona;
