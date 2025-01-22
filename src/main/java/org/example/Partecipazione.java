@@ -22,6 +22,58 @@ public class Partecipazione {
     @Column(nullable = false)
     private Stato stato;
 
+    //costruttore
+    public Partecipazione(){}
+
+    public Partecipazione(Persona persona, Evento evento, Stato stato) {
+        this.persona=persona;
+        this.evento=evento;
+        this.stato=stato;
+    }
+
+    //getter
+    public Long getId() {
+        return id;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public Evento getEvento() {
+        return evento;
+    }
+
+    public Stato getStato() {
+        return stato;
+    }
+
+
+    //setter
+    public void setPersona(Persona persona) {
+        this.persona=persona;
+    }
+
+    public void setEvento(Evento evento) {
+        this.evento=evento;
+    }
+
+    public void setStato(Stato stato) {
+        this.stato=stato;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Partecipazione{" +
+                "id=" + id +
+                ", persona=" + persona +
+                ", evento=" + evento +
+                ", stato=" + stato +
+                '}';
+    }
+
+
     public enum Stato{
         CONFERMATO,
         DA_CONFERMARE

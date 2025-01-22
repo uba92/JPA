@@ -30,6 +30,7 @@ public class Persona {
     @Column(nullable = false)
     private Sesso sesso;
 
+    @OneToMany(mappedBy = "persona")
     private List<Partecipazione> lista_partecipazioni = new ArrayList<>();
 
     //COSTRUTTORE
@@ -66,6 +67,10 @@ public class Persona {
         this.sesso=sesso;
     }
 
+    public void setLista_partecipazioni(List<Partecipazione> lista_partecipazioni) {
+        this.lista_partecipazioni=lista_partecipazioni;
+    }
+
     //getter
 
     public String getNome() {
@@ -87,6 +92,11 @@ public class Persona {
     public Sesso getSesso() {
         return sesso;
     }
+
+    public List<Partecipazione> getLista_partecipazioni() {
+        return lista_partecipazioni;
+    }
+
     public enum Sesso{
         M,
         F
