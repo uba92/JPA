@@ -15,7 +15,7 @@ public class Partecipazione {
     //persona_id - in SQL nella tabella Partecipazione ho una colonna persona_id che prende il valore dalla tabella
     //persona, precisamente dalla sua PRIMARY KEY (id della persona)
     @ManyToOne
-    @JoinColumn(name = "persona_id", nullable = false)
+    @JoinColumn(name = "persona_id")
     private Persona persona;
 
     @ManyToOne
@@ -23,7 +23,6 @@ public class Partecipazione {
     private Evento evento;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Stato stato;
 
     //costruttore
@@ -65,6 +64,8 @@ public class Partecipazione {
     public void setStato(Stato stato) {
         this.stato=stato;
     }
+
+
 
 
     @Override

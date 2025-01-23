@@ -2,17 +2,25 @@ package org.example;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "location")
 public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+
     private String nome;
 
-    @Column(nullable = false)
+
     private String citta;
+
+    @OneToMany(mappedBy = "location")
+    private List<Evento> lista_eventi = new ArrayList<>();
 
     public Location(){}
 

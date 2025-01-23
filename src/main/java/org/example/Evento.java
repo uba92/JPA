@@ -3,6 +3,8 @@ package org.example;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity //questa annotazione indica che la classe si comporterà come una entità, quindi ogni oggetto istanziato
 // con questa classe rappresenterà una riga della tabella del DB
@@ -29,8 +31,16 @@ public class Evento {
     @Column(name = "numero_massimo_partecipanti")
     private int numero_massimo_partecipanti;
 
-    @Column(name = "location")
+
+
+    @ManyToOne
+    @JoinColumn(name = "location_id")
     private Location location;
+
+    @OneToMany(mappedBy = "evento")
+    private List<Partecipazione> lista_partecipazioni = new ArrayList<>();
+
+
     //costruttori
     public Evento() {
 

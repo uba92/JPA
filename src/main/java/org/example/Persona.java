@@ -14,20 +14,19 @@ public class Persona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "nome")
     private String nome;
 
-    @Column(nullable = false)
+
     private String cognome;
 
-    @Column(nullable = false)
+
     private String email;
 
-    @Column(nullable = false)
+
     private LocalDate data_nascita;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Sesso sesso;
 
     @OneToMany(mappedBy = "persona")
@@ -71,6 +70,10 @@ public class Persona {
         this.lista_partecipazioni=lista_partecipazioni;
     }
 
+    public void addPartecipazioni(Partecipazione partecipazione) {
+        lista_partecipazioni.add(partecipazione);
+    }
+
     //getter
 
     public String getNome() {
@@ -100,5 +103,18 @@ public class Persona {
     public enum Sesso{
         M,
         F
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", email='" + email + '\'' +
+                ", data_nascita=" + data_nascita +
+                ", sesso=" + sesso +
+
+                '}';
     }
 }
